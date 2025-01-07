@@ -54,6 +54,7 @@
     name: httpd
     state: started
     enabled: yes
+  become: true
 
 - name: Restart httpd service
   service:
