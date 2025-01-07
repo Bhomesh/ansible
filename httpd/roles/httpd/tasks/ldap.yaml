@@ -13,12 +13,12 @@
         mode: '0644'
       notify: Reload httpd
       
-    - name: Copy LDAP root certificate
-      copy:
-        src: "{{ ldap_root_cert }}"
-        dest: "{{ node['mm-httpd']['ldap_root_cert'] }}"
-        owner: root
-        group: root
-        mode: '0644'
-      notify: Reload httpd
+    # - name: Copy LDAP root certificate
+    #   copy:
+    #     src: "{{ ldap_root_cert }}"
+    #     dest: "{{ node['mm-httpd']['ldap_root_cert'] }}"
+    #     owner: root
+    #     group: root
+    #     mode: '0644'
+    #   notify: Reload httpd
 
