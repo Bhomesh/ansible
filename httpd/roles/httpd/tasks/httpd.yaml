@@ -57,8 +57,8 @@
 #     enabled: yes
 #   become: True
 
-- name: Restart httpd service
-  service:
-    name: httpd
-    state: restarted
-  become: True
+# - name: Restart httpd service
+#   service:
+#     name: httpd
+#     state: restarted
+#   become: True
