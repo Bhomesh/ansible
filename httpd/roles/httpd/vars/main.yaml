@@ -1,0 +1,26 @@
+# ansible/vars/mm_httpd.yml
+mm_httpd:
+  Timeout: '300'
+  KeepAlive: 'On'
+  ServerAdmin: 'webmaster@mediamorph.com'
+  
+  keys:
+    - wildcard.mediamorph.com.key
+    - wildcard.int.mediamorph.com.key
+    - wildcard.priv.mediamorph.com.key
+    - wildcard.whipmedia.com.key
+  
+  certificates:
+    - wildcard.mediamorph.com.crt
+    - wildcard.mediamorph.com_chain.crt
+    - wildcard.int.mediamorph.com.crt
+    - wildcard.int.mediamorph.com_chain.crt
+    - wildcard.priv.mediamorph.com.crt
+    - wildcard.priv.mediamorph.com_chain.crt
+    - wildcard.whipmedia.com.crt
+    - GandiStandardSSLCA2.pem
+  
+  ldap_trusted_mode: 'TLS'
+  ldap_cert_format: 'CA_BASE64'
+  ldap_root_cert: '/etc/openldap/certs/mediamorph_root.cer'
+  ubuntu_ldap_root_cert: '/etc/ssl/certs/mediamorph_root.cer'

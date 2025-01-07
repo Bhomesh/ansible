@@ -42,13 +42,13 @@ ServerRoot "/etc/httpd"
 Listen 80
 
 # Connection Timeout
-Timeout <%= node['mm-httpd']['Timeout'] %>
+Timeout 300
 
 #
 # KeepAlive: Whether or not to allow persistent connections (more than
 # one request per connection). Set to "Off" to deactivate.
 #
-KeepAlive <%= node['mm-httpd']['KeepAlive'] %>
+KeepAlive On
 
 #
 # Dynamic Shared Object (DSO) Support

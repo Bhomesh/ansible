@@ -30,14 +30,14 @@
     name: mod_session
     state: present
 
-- name: Ensure httpd.conf is present
-  template:
-    src: httpd.conf.j2
-    dest: /etc/httpd/conf/httpd.conf
-    owner: root
-    group: root
-    mode: '0644'
-  when: ansible_os_family == "RedHat"
+# - name: Ensure httpd.conf is present
+#   template:
+#     src: httpd.conf.j2
+#     dest: /etc/httpd/conf/httpd.conf
+#     owner: root
+#     group: root
+#     mode: '0644'
+#   when: ansible_os_family == "RedHat"
 
 - name: Copy autoindex.conf
   copy:
@@ -47,8 +47,3 @@
     group: root
     mode: '0644'
 
-- name: Restart httpd service
-  service:
-    name: httpd
-    state: start
-  become: true
