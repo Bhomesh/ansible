@@ -49,6 +49,6 @@
 
 - name: Restart httpd service
   service:
-    remote_user: root
     name: httpd
     state: restarted
+  become: true
