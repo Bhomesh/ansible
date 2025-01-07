@@ -1,6 +1,5 @@
 ---
 - name: Restart httpd service
   service:
-    name: httpd
+    name: "{{ httpd_service }}"
     state: restarted
-

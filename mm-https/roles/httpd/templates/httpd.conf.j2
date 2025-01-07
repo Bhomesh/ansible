@@ -1,0 +1,15 @@
+# Example of a simple httpd.conf template
+
+ServerRoot "/etc/httpd"
+Listen 80
+
+LoadModule dir_module modules/mod_dir.so
+LoadModule authz_host_module modules/mod_authz_host.so
+
+DocumentRoot "/var/www/html"
+<Directory "/var/www/html">
+    AllowOverride None
+    Require all granted
+</Directory>
+
+# Further Apache configurations here

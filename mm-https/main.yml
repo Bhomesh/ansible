@@ -1,9 +1,7 @@
 ---
-- name: Install httpd
+- name: Install and Configure httpd
   hosts: webservers
   become: true
   remote_user: ec2-user
-  # become_method: sudo
-  # become_user: ubuntu
   roles:
     - httpd
