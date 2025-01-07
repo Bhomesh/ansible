@@ -54,10 +54,10 @@
     name: httpd
     state: started
     enabled: yes
-  become: true
+  become: True
 
 - name: Restart httpd service
   service:
     name: httpd
     state: restart
-  become: true
+  become: True
