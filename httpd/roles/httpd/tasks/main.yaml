@@ -15,3 +15,26 @@
     name: httpd
     state: started
     enabled: yes
+- name: install apr-util-pgsql
+  yum:
+    name: apr-util-pgsql
+    state: present
+
+- name: install apr-util-openssl
+  yum:
+    name: apr-util-openssl
+    state: present
+
+- name: install mod_session
+  yum:
+    name: mod_session
+    state: present
+
+- name: Ensure httpd.conf is present
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_os_family == "RedHat"
