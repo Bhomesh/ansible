@@ -30,6 +30,8 @@
     name: mod_session
     state: present
 
+
+
 - name: Ensure httpd.conf is present
   template:
     src: httpd.conf.j2
@@ -47,8 +49,14 @@
     group: root
     mode: '0644'
 
+- name: Start and enable httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
 - name: Restart httpd service
   service:
     name: httpd
-    state: start
+    state: restarted
   become: true
