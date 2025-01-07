@@ -4,14 +4,14 @@
         name: mod_ldap
         state: present
 
-    - name: Ensure ldap.conf is present
-      template:
-        src: ldap.conf.j2
-        dest: /etc/httpd/conf.d/ldap.conf
-        owner: root
-        group: root
-        mode: '0644'
-      notify: Reload httpd
+    # - name: Ensure ldap.conf is present
+    #   template:
+    #     src: ldap.conf.j2
+    #     dest: /etc/httpd/conf.d/ldap.conf
+    #     owner: root
+    #     group: root
+    #     mode: '0644'
+    #   notify: Reload httpd
       
     # - name: Copy LDAP root certificate
     #   copy:
