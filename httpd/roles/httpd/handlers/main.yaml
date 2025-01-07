@@ -2,5 +2,5 @@
 - name: Restart httpd service
   service:
     name: httpd
-    state: started
+    state: restarted
   become: True
