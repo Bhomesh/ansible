@@ -1,0 +1,14 @@
+- name: Start Nginx in Ubuntu
+  become: true
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  when: ansible_os_family == 'Debian'
+
+- name: Start Nginx in Amazon Linux
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  when: ansible_os_family == 'RedHat'

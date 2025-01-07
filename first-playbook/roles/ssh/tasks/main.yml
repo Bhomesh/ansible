@@ -1,0 +1,26 @@
+---
+- name: Ensure SSH is installed on Ubuntu
+  apt:
+    name: openssh-server
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure SSH is installed on Amazon Linux
+  yum:
+    name: openssh-server
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Start SSH service on Ubuntu
+  service:
+    name: ssh
+    state: started
+    enabled: yes
+  when: ansible_os_family == 'Debian'
+
+- name: Start SSH service on Amazon Linux
+  service:
+    name: sshd
+    state: started
+    enabled: yes
+  when: ansible_os_family == 'RedHat'

@@ -1,0 +1,9 @@
+---
+- name: Install Nginx
+  hosts: webservers
+  become: true
+  remote_user: ubuntu 
+  # become_method: sudo
+  # become_user: ubuntu
+  roles:
+    - nginx

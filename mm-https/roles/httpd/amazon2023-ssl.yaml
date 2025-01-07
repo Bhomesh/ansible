@@ -1,0 +1,54 @@
+# playbook.yml
+---
+- name: Configure SSL for HTTPD
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Install mod_ssl package
+      yum:
+        name: mod_ssl
+        state: present
+
+    - name: Configure SSL template
+      template:
+        src: ssl.conf.erb
+        dest: /etc/httpd/conf/ssl.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload httpd
+
+    - name: Copy SSL configuration file
+      copy:
+        src: httpd_ssl.conf
+        dest: /etc/httpd/conf.d/ssl.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload httpd
+
+    - name: Copy private keys
+      copy:
+        src: "{{ item }}"
+        dest: "/etc/pki/tls/private/{{ item }}"
+        owner: root
+        group: root
+        mode: '0600'
+      with_items: "{{ mm_httpd.keys }}"
+      notify: Reload httpd
+
+    - name: Copy certificates
+      copy:
+        src: "{{ item }}"
+        dest: "/etc/pki/tls/certs/{{ item }}"
+        owner: root
+        group: root
+        mode: '0644'
+      with_items: "{{ mm_httpd.certificates }}"
+      notify: Reload httpd
+
+  handlers:
+    - name: Reload httpd
+      service:
+        name: httpd
+        state: reloaded

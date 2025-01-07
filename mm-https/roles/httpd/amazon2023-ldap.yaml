@@ -1,0 +1,34 @@
+# playbook.yml
+---
+- name: Configure HTTPD with LDAP
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Install mod_ldap package
+      package:
+        name: mod_ldap
+        state: present
+
+    - name: Ensure ldap.conf is present
+      template:
+        src: ldap.conf.j2
+        dest: /etc/httpd/conf.d/ldap.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload httpd
+
+    - name: Copy LDAP root certificate
+      copy:
+        src: "{{ ldap_root_cert }}"
+        dest: "{{ node['mm-httpd']['ldap_root_cert'] }}"
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload httpd
+
+  handlers:
+    - name: Reload httpd
+      service:
+        name: httpd
+        state: reloaded

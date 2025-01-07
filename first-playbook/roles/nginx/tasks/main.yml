@@ -1,0 +1,2 @@
+- include_tasks: install_nginx.yml
+- include_tasks: ../handlers/start_nginx.yml

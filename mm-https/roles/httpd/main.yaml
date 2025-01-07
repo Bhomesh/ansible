@@ -1,0 +1,12 @@
+---
+    - name: Include HTTPD configuration for Amazon 2023
+      include_tasks: amazon2023-httpd.yaml
+      when: is_amazon_2023
+
+    - name: Include LDAP configuration for Amazon 2023
+      include_tasks: amazon2023-ldap.yaml
+      when: is_amazon_2023
+
+    - name: Include SSL configuration for Amazon 2023
+      include_tasks: amazon2023-ssl.yaml
+      when: is_amazon_2023
