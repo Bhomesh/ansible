@@ -32,7 +32,7 @@
 
 - name: Ensure httpd.conf is present
   template:
-    src: httpd.conf.erb
+    src: httpd.conf.j2
     dest: /etc/httpd/conf/httpd.conf
     owner: root
     group: root
