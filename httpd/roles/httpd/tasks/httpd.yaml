@@ -10,11 +10,11 @@
     name: httpd
     state: present
 
-# - name: Start and enable httpd service
-#   service:
-#     name: httpd
-#     state: started
-#     enabled: yes
+- name: Start and enable httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
 
 - name: install apr-util-pgsql
   yum:
@@ -50,15 +50,15 @@
     group: root
     mode: '0644'
 
-# - name: Start and enable httpd service
-#   service:
-#     name: httpd
-#     state: started
-#     enabled: yes
-#   become: True
+- name: Start and enable httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  become: True
 
-# - name: Restart httpd service
-#   service:
-#     name: httpd
-#     state: restarted
-#   become: True
+- name: Restart httpd service
+  service:
+    name: httpd
+    state: restarted
+  become: True
