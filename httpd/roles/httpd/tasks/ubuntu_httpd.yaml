@@ -16,10 +16,10 @@
         owner: root
         group: root
         mode: '0644'
-      when: ansible_os_family == "Debian"
+      # when: ansible_os_family == "Debian"
 
-    - name: Enable and start Apache service
-      service:
-        name: apache2
-        enabled: yes
-        state: started
+    # - name: Enable and start Apache service
+    #   service:
+    #     name: apache2
+    #     enabled: yes
+    #     state: started
