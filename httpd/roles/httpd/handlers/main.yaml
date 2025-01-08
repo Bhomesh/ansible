@@ -10,3 +10,8 @@
     name: httpd
     state: reloaded
   become: True
+
+- name: Reload Apache
+  service:
+    name: apache2
+    state: reloaded

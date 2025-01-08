@@ -1,0 +1,28 @@
+- name: Ensure SSL configuration file is present
+  template:
+    src: ssl.conf.j2
+    dest: /etc/apache2/ssl.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload Apache
+
+- name: Copy SSL private keys
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ssl/private/{{ item }}"
+    owner: root
+    group: root
+    mode: '0600'
+  with_items: "{{ mm_httpd.keys }}"
+  notify: Reload Apache
+
+- name: Copy SSL certificates
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ssl/certs/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ mm_httpd.certificates }}"
+  notify: Reload Apache

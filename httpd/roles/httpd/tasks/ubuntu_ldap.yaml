@@ -1,0 +1,17 @@
+    - name: Ensure ldap.conf is present
+      template:
+        src: ldap.conf.j2
+        dest: /etc/apache2/ldap.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload Apache
+
+    - name: Copy the root certificate
+      copy:
+        src: "{{ mm_httpd_ubuntu_ldap_root_cert }}"
+        dest: "{{ mm_httpd_ubuntu_ldap_root_cert }}"
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Reload Apache
