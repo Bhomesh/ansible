@@ -1,0 +1,5 @@
+#
+# Enable LDAP over TLS and specify the Mediamorph Root CA certificate
+#
+LDAPTrustedMode {{ node['mm-httpd']['ldap_trusted_mode'] }}
+LDAPTrustedGlobalCert {{ node['mm-httpd']['ldap_cert_format'] }} {{ node['mm-httpd']['ldap_root_cert'] }}

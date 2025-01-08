@@ -5,7 +5,7 @@
 
     - name: Configure SSL template
       template:
-        src: ssl.conf.erb
+        src: ssl.conf.j2
         dest: /etc/httpd/conf/ssl.conf
         owner: root
         group: root
@@ -14,7 +14,7 @@
 
     - name: Copy SSL configuration file
       copy:
-        src: httpd_ssl.conf
+        src: httpd_ssl.conf.j2
         dest: /etc/httpd/conf.d/ssl.conf
         owner: root
         group: root
