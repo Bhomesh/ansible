@@ -2,10 +2,10 @@
   include_tasks: amazon_httpd.yaml
   include_tasks: amazon_ldap.yaml
   include_tasks: amazon_ssl.yaml
-  when: ansible_distribution == 'Amazon' 
+  when: ansible_distribution == "Amazon" 
 
 - name: Include HTTPD for Ubuntu
   include_tasks: ubuntu_httpd.yaml
   include_tasks: ubuntu_ldap.yaml
   include_tasks: ubuntu_ssl.yaml
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == "Ubuntu"
