@@ -1,5 +1,5 @@
 ---
-- name: Install and configure HTTPD on Amazon Linux
+- name: Install and configure HTTPD on Amazon Linux and Ubuntu
   hosts: webservers
   become: true
   roles:
